@@ -4,8 +4,34 @@ async function getData() {
         const data = await res.json()
         const result = data.result.records
         return result
+	}
+	async function getData2() {
+        const res = await fetch('https://nallus.com/wp-json/wp/v2/posts');
+        const data = await res.json()
+        const result = data
+        return result
     }
 </script>
+
+
+
+
+
+{#await getData2()}
+	loading....
+{:then posts}
+	{#each posts as post}
+		<section>
+			{post.title.rendered}
+			{post.content.rendered}
+		</section>
+	{/each}
+
+{:catch e}
+	error {e}
+{/await}
+<hr>
+
 
 {#await getData()}
 	loading....

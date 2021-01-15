@@ -444,7 +444,186 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (24:0) {:catch e}
+    function get_each_context_1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[1] = list[i];
+    	return child_ctx;
+    }
+
+    // (30:0) {:catch e}
+    function create_catch_block_1(ctx) {
+    	let t0;
+    	let t1_value = /*e*/ ctx[4] + "";
+    	let t1;
+
+    	const block = {
+    		c: function create() {
+    			t0 = text("error ");
+    			t1 = text(t1_value);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, t1, anchor);
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(t1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_catch_block_1.name,
+    		type: "catch",
+    		source: "(30:0) {:catch e}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (22:0) {:then posts}
+    function create_then_block_1(ctx) {
+    	let each_1_anchor;
+    	let each_value_1 = /*posts*/ ctx[0];
+    	validate_each_argument(each_value_1);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, each_1_anchor, anchor);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*getData2*/ 0) {
+    				each_value_1 = /*posts*/ ctx[0];
+    				validate_each_argument(each_value_1);
+    				let i;
+
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block_1(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value_1.length;
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(each_1_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_then_block_1.name,
+    		type: "then",
+    		source: "(22:0) {:then posts}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (23:1) {#each posts as post}
+    function create_each_block_1(ctx) {
+    	let section;
+    	let t0_value = /*post*/ ctx[1].title.rendered + "";
+    	let t0;
+    	let t1;
+    	let t2_value = /*post*/ ctx[1].content.rendered + "";
+    	let t2;
+    	let t3;
+
+    	const block = {
+    		c: function create() {
+    			section = element("section");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			t2 = text(t2_value);
+    			t3 = space();
+    			attr_dev(section, "class", "svelte-m9wdkp");
+    			add_location(section, file, 23, 2, 580);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, section, anchor);
+    			append_dev(section, t0);
+    			append_dev(section, t1);
+    			append_dev(section, t2);
+    			append_dev(section, t3);
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(section);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_1.name,
+    		type: "each",
+    		source: "(23:1) {#each posts as post}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (20:19)   loading.... {:then posts}
+    function create_pending_block_1(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text("loading....");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_pending_block_1.name,
+    		type: "pending",
+    		source: "(20:19)   loading.... {:then posts}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (50:0) {:catch e}
     function create_catch_block(ctx) {
     	let t0;
     	let t1_value = /*e*/ ctx[4] + "";
@@ -470,14 +649,14 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(24:0) {:catch e}",
+    		source: "(50:0) {:catch e}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (12:0) {:then posts}
+    // (38:0) {:then posts}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let each_value = /*posts*/ ctx[0];
@@ -538,14 +717,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(12:0) {:then posts}",
+    		source: "(38:0) {:then posts}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (13:1) {#each posts as post}
+    // (39:1) {#each posts as post}
     function create_each_block(ctx) {
     	let section;
     	let t0_value = /*post*/ ctx[1]._id + "";
@@ -583,7 +762,7 @@ var app = (function () {
     			t10 = text(t10_value);
     			t11 = space();
     			attr_dev(section, "class", "svelte-m9wdkp");
-    			add_location(section, file, 13, 2, 380);
+    			add_location(section, file, 39, 2, 774);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -610,14 +789,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(13:1) {#each posts as post}",
+    		source: "(39:1) {#each posts as post}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (10:18)   loading.... {:then posts}
+    // (36:18)   loading.... {:then posts}
     function create_pending_block(ctx) {
     	let t;
 
@@ -638,7 +817,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(10:18)   loading.... {:then posts}",
+    		source: "(36:18)   loading.... {:then posts}",
     		ctx
     	});
 
@@ -646,9 +825,26 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
-    	let await_block_anchor;
+    	let t0;
+    	let hr;
+    	let t1;
+    	let await_block1_anchor;
 
     	let info = {
+    		ctx,
+    		current: null,
+    		token: null,
+    		hasCatch: true,
+    		pending: create_pending_block_1,
+    		then: create_then_block_1,
+    		catch: create_catch_block_1,
+    		value: 0,
+    		error: 4
+    	};
+
+    	handle_promise(getData2(), info);
+
+    	let info_1 = {
     		ctx,
     		current: null,
     		token: null,
@@ -660,21 +856,32 @@ var app = (function () {
     		error: 4
     	};
 
-    	handle_promise(getData(), info);
+    	handle_promise(getData(), info_1);
 
     	const block = {
     		c: function create() {
-    			await_block_anchor = empty();
     			info.block.c();
+    			t0 = space();
+    			hr = element("hr");
+    			t1 = space();
+    			await_block1_anchor = empty();
+    			info_1.block.c();
+    			add_location(hr, file, 32, 0, 696);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, await_block_anchor, anchor);
     			info.block.m(target, info.anchor = anchor);
-    			info.mount = () => await_block_anchor.parentNode;
-    			info.anchor = await_block_anchor;
+    			info.mount = () => t0.parentNode;
+    			info.anchor = t0;
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, hr, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, await_block1_anchor, anchor);
+    			info_1.block.m(target, info_1.anchor = anchor);
+    			info_1.mount = () => await_block1_anchor.parentNode;
+    			info_1.anchor = await_block1_anchor;
     		},
     		p: function update(new_ctx, [dirty]) {
     			ctx = new_ctx;
@@ -684,14 +891,26 @@ var app = (function () {
     				child_ctx[0] = child_ctx[4] = info.resolved;
     				info.block.p(child_ctx, dirty);
     			}
+
+    			{
+    				const child_ctx = ctx.slice();
+    				child_ctx[0] = child_ctx[4] = info_1.resolved;
+    				info_1.block.p(child_ctx, dirty);
+    			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(await_block_anchor);
     			info.block.d(detaching);
     			info.token = null;
     			info = null;
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(hr);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(await_block1_anchor);
+    			info_1.block.d(detaching);
+    			info_1.token = null;
+    			info_1 = null;
     		}
     	};
 
@@ -713,6 +932,13 @@ var app = (function () {
     	return result;
     }
 
+    async function getData2() {
+    	const res = await fetch("https://nallus.com/wp-json/wp/v2/posts");
+    	const data = await res.json();
+    	const result = data;
+    	return result;
+    }
+
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
@@ -722,7 +948,7 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<App> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ getData });
+    	$$self.$capture_state = () => ({ getData, getData2 });
     	return [];
     }
 
