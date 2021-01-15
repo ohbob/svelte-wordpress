@@ -6,7 +6,7 @@ async function getData() {
         return result
 	}
 	async function getData2() {
-        const res = await fetch('https://nallus.com/wp-json/wp/v2/posts');
+        const res = await fetch('https://cp55675.chost.lv/wp-json/wp/v2/posts');
         const data = await res.json()
         const result = data
         return result
@@ -30,7 +30,7 @@ async function getData() {
 {:catch e}
 	error {e}
 {/await}
-<hr>
+
 
 
 {#await getData()}

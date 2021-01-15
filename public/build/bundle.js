@@ -569,7 +569,7 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = space();
     			attr_dev(section, "class", "svelte-m9wdkp");
-    			add_location(section, file, 23, 2, 580);
+    			add_location(section, file, 23, 2, 586);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -762,7 +762,7 @@ var app = (function () {
     			t10 = text(t10_value);
     			t11 = space();
     			attr_dev(section, "class", "svelte-m9wdkp");
-    			add_location(section, file, 39, 2, 774);
+    			add_location(section, file, 39, 2, 776);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -825,9 +825,7 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
-    	let t0;
-    	let hr;
-    	let t1;
+    	let t;
     	let await_block1_anchor;
 
     	let info = {
@@ -861,23 +859,18 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			info.block.c();
-    			t0 = space();
-    			hr = element("hr");
-    			t1 = space();
+    			t = space();
     			await_block1_anchor = empty();
     			info_1.block.c();
-    			add_location(hr, file, 32, 0, 696);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			info.block.m(target, info.anchor = anchor);
-    			info.mount = () => t0.parentNode;
-    			info.anchor = t0;
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, hr, anchor);
-    			insert_dev(target, t1, anchor);
+    			info.mount = () => t.parentNode;
+    			info.anchor = t;
+    			insert_dev(target, t, anchor);
     			insert_dev(target, await_block1_anchor, anchor);
     			info_1.block.m(target, info_1.anchor = anchor);
     			info_1.mount = () => await_block1_anchor.parentNode;
@@ -904,9 +897,7 @@ var app = (function () {
     			info.block.d(detaching);
     			info.token = null;
     			info = null;
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(hr);
-    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(t);
     			if (detaching) detach_dev(await_block1_anchor);
     			info_1.block.d(detaching);
     			info_1.token = null;
@@ -933,7 +924,7 @@ var app = (function () {
     }
 
     async function getData2() {
-    	const res = await fetch("https://nallus.com/wp-json/wp/v2/posts");
+    	const res = await fetch("https://cp55675.chost.lv/wp-json/wp/v2/posts");
     	const data = await res.json();
     	const result = data;
     	return result;
