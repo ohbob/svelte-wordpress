@@ -2,7 +2,7 @@
 	const wordpress_url = "nallus.com"
 
 	async function getData() {
-		const response = await fetch("http://" + wordpress_url + "/wp-json/wp/v2/posts");
+		const response = await fetch("https://" + wordpress_url + "/wp-json/wp/v2/posts");
 
 		if (response.ok) {
 			return response.json();
