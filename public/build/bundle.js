@@ -571,10 +571,10 @@ var app = (function () {
     			t1 = space();
     			p = element("p");
     			t2 = space();
-    			add_location(h2, file, 20, 3, 378);
-    			add_location(p, file, 21, 3, 412);
+    			add_location(h2, file, 20, 3, 375);
+    			add_location(p, file, 21, 3, 409);
     			attr_dev(section, "class", "svelte-m9wdkp");
-    			add_location(section, file, 19, 2, 365);
+    			add_location(section, file, 19, 2, 362);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -691,7 +691,7 @@ var app = (function () {
     	return block;
     }
 
-    const wordpress_url = "vietnieks.com";
+    const wordpress_url = "nallus.com";
 
     async function getData() {
     	const response = await fetch("http://" + wordpress_url + "/wp-json/wp/v2/posts");
