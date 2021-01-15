@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e6dceae4-89cc-45ce-a06b-4eecbdd0deeb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.svelte" afterDir="false" />
-    </list>
+    <list default="true" id="e6dceae4-89cc-45ce-a06b-4eecbdd0deeb" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +31,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610746297114</updated>
-      <workItem from="1610746299003" duration="263000" />
+      <workItem from="1610746299003" duration="338000" />
     </task>
     <servers />
   </component>

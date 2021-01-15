@@ -1,16 +1,10 @@
 <script>
-	const wordpress_url = "nallus.com"
-
-	async function getData() {
-		const response = await fetch("https://" + wordpress_url + "/wp-json/wp/v2/posts");
-
-		if (response.ok) {
-			return response.json();
-
-		} else {
-			throw new Error('there was a problem with fetch');
-		}
-	}
+async function getData() {
+        const res = await fetch('https://data.gov.lv/dati/lv/api/3/action/datastore_search?resource_id=610910e9-e086-4c5b-a7ea-0a896a697672&limit=100');
+        const data = await res.json()
+        const result = data.result.records
+        return result
+    }
 </script>
 
 {#await getData()}
@@ -18,8 +12,12 @@
 {:then posts}
 	{#each posts as post}
 		<section>
-			<h2>{post.title.rendered}</h2>
-			<p>{@html post.content.rendered}</p>
+			{post._id}
+			{post.Numurs}
+			{post.Nosaukums}
+			{post.Aktīvs}
+			{post.Reģistrēts}
+			{post.Izslēgts}
 		</section>
 	{/each}
 
