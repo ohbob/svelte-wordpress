@@ -14,7 +14,7 @@
 </script>
 
 {#await getData()}
-	loading...
+	loading....
 {:then posts}
 	{#each posts as post}
 		<section>

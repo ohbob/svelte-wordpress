@@ -571,10 +571,10 @@ var app = (function () {
     			t1 = space();
     			p = element("p");
     			t2 = space();
-    			add_location(h2, file, 20, 3, 377);
-    			add_location(p, file, 21, 3, 411);
+    			add_location(h2, file, 20, 3, 378);
+    			add_location(p, file, 21, 3, 412);
     			attr_dev(section, "class", "svelte-m9wdkp");
-    			add_location(section, file, 19, 2, 364);
+    			add_location(section, file, 19, 2, 365);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -602,13 +602,13 @@ var app = (function () {
     	return block;
     }
 
-    // (16:18)   loading... {:then posts}
+    // (16:18)   loading.... {:then posts}
     function create_pending_block(ctx) {
     	let t;
 
     	const block = {
     		c: function create() {
-    			t = text("loading...");
+    			t = text("loading....");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t, anchor);
@@ -623,7 +623,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(16:18)   loading... {:then posts}",
+    		source: "(16:18)   loading.... {:then posts}",
     		ctx
     	});
 
