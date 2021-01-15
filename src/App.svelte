@@ -22,8 +22,9 @@ async function getData() {
 {:then posts}
 	{#each posts as post}
 		<section>
-			{post.title.rendered}
+			<a href="{post.link}">{post.title.rendered}</a>
 			{post.content.rendered}
+		
 		</section>
 	{/each}
 

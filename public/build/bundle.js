@@ -450,7 +450,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (30:0) {:catch e}
+    // (31:0) {:catch e}
     function create_catch_block_1(ctx) {
     	let t0;
     	let t1_value = /*e*/ ctx[4] + "";
@@ -476,7 +476,7 @@ var app = (function () {
     		block,
     		id: create_catch_block_1.name,
     		type: "catch",
-    		source: "(30:0) {:catch e}",
+    		source: "(31:0) {:catch e}",
     		ctx
     	});
 
@@ -554,6 +554,7 @@ var app = (function () {
     // (23:1) {#each posts as post}
     function create_each_block_1(ctx) {
     	let section;
+    	let a;
     	let t0_value = /*post*/ ctx[1].title.rendered + "";
     	let t0;
     	let t1;
@@ -564,16 +565,20 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			section = element("section");
+    			a = element("a");
     			t0 = text(t0_value);
     			t1 = space();
     			t2 = text(t2_value);
     			t3 = space();
+    			attr_dev(a, "href", ctx[1].link);
+    			add_location(a, file, 24, 3, 599);
     			attr_dev(section, "class", "svelte-m9wdkp");
     			add_location(section, file, 23, 2, 586);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
-    			append_dev(section, t0);
+    			append_dev(section, a);
+    			append_dev(a, t0);
     			append_dev(section, t1);
     			append_dev(section, t2);
     			append_dev(section, t3);
@@ -623,7 +628,7 @@ var app = (function () {
     	return block;
     }
 
-    // (50:0) {:catch e}
+    // (51:0) {:catch e}
     function create_catch_block(ctx) {
     	let t0;
     	let t1_value = /*e*/ ctx[4] + "";
@@ -649,14 +654,14 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(50:0) {:catch e}",
+    		source: "(51:0) {:catch e}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (38:0) {:then posts}
+    // (39:0) {:then posts}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let each_value = /*posts*/ ctx[0];
@@ -717,14 +722,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(38:0) {:then posts}",
+    		source: "(39:0) {:then posts}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (39:1) {#each posts as post}
+    // (40:1) {#each posts as post}
     function create_each_block(ctx) {
     	let section;
     	let t0_value = /*post*/ ctx[1]._id + "";
@@ -762,7 +767,7 @@ var app = (function () {
     			t10 = text(t10_value);
     			t11 = space();
     			attr_dev(section, "class", "svelte-m9wdkp");
-    			add_location(section, file, 39, 2, 776);
+    			add_location(section, file, 40, 2, 805);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -789,14 +794,14 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(39:1) {#each posts as post}",
+    		source: "(40:1) {#each posts as post}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (36:18)   loading.... {:then posts}
+    // (37:18)   loading.... {:then posts}
     function create_pending_block(ctx) {
     	let t;
 
@@ -817,7 +822,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(36:18)   loading.... {:then posts}",
+    		source: "(37:18)   loading.... {:then posts}",
     		ctx
     	});
 
